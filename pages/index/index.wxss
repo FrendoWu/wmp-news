@@ -1,21 +1,34 @@
-/**index.wxss**/
-.userinfo {
+.news-type-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #03A9F4;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.news-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: #ffffff;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  margin-bottom: 4px;
+  font-weight: 200;
+  width: 700rpx;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.news-type-checked {
+  color: #ffffff;
+  font-weight: 900;
+  border-bottom: 2px solid #ffffff;
 }
 
-.usermotto {
-  margin-top: 200px;
+.news-icon {
+  width: 50rpx;
+  height: 40rpx;
+  border-left: 1rpx solid #B3E5FC;
+}
+
+.news-type-image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 5rpx;
 }

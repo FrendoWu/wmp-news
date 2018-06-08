@@ -1,12 +1,12 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/type/type"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#03A9F4",
+    "navigationBarTitleText": "震今新闻",
+    "navigationBarTextStyle": "white"
   }
 }

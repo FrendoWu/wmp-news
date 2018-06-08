@@ -1,13 +1,17 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class='news-type-wrapper'>
+  <view class="news-type">
+    <view
+      wx:for="{{newsType}}"
+      wx:for-index="j"
+      wx:for-item="type"
+      class="{{newsType[j] === selectedNewsType? 'news-type-item news-type-checked': 'news-type-item'}}"
+      data-news-type="{{type}}"
+      bindtap='tapNewsType'>
+      {{newsTypeMap[j]}}
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class='news-icon'>
+    <image src='/images/news-type-edit.png' class='news-type-image' bindtap='onTapNewsType'>
+    </image>
   </view>
 </view>
