@@ -1,4 +1,0 @@
-/* 去除button边框 */
-button::after{
-  border:none;
-}

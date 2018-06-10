@@ -73,9 +73,8 @@
   padding: 16rpx 16rpx 0rpx 16rpx;
   font-size: 30rpx;
   line-height: 42rpx;
-  /* height: 84rpx; */
   width: 750rpx;
-  word-wrap: break-word;
+  word-wrap: break-all;
 }
 
 .swiper-subtitle {
@@ -96,6 +95,11 @@
   padding: 0rpx;
   margin-left: 0rpx;
   margin-top: -7rpx;
+}
+
+/* 去除button边框 */
+.news-type-button::after{
+  border:none;
 }
 
 .swiper-source {
@@ -140,6 +144,7 @@
   height: 120rpx;
 }
 
+/* 去除最后一个新闻的下边线 */
 .news-item:last-child {
   border-bottom: 0px;
 }

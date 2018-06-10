@@ -30,12 +30,15 @@
   margin-top: 24rpx;
 }
 
+/* 在每部分content之间加30rpx */
 .content-list view{
   margin-bottom: 30rpx;
 }
+
 .paragraph {
   font-size: 35rpx;
   line-height: 49rpx;
+  
   text-indent: 2em;
 }
 

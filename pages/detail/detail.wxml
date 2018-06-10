@@ -3,7 +3,9 @@
   <view class="title-wrapper">
     <view class='title-text'>{{news.title}}</view>
     <view class='subtitle-wrapper'>
+      <!-- 防止在新闻数据未加载完成时显示undefined -->
       <view>{{news.source === undefined || news.source === ''? '': news.source+ '  '}}{{news.date}}</view>
+      <!-- 防止在新闻数据未加载完成时显示'阅读量' -->
       <view>{{news.readCount === undefined || news.readCount === ''?'': '阅读量:' + news.readCount}}</view>
     </view>
   </view>
