@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -21,13 +21,30 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "type-setting",
+					"pathName": "pages/type/type",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "news-detail",
+					"pathName": "pages/detail/detail",
+					"query": ""
+				}
+			]
 		}
 	}
 }

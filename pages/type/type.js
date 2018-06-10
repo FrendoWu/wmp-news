@@ -1,66 +1,88 @@
 // pages/type/type.js
-Page({
+const app = getApp()
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
-  
+    userInfo: null,
+    hasUserInfo: false,
+    userNewsType: [],
+    typeValue: app.globalData.typeValue,
+    typeKey: app.globalData.typeKey,
+    typeStatus: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function () {
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+      this.bindData()
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo;
+          this.setData({
+            userInfo: app.globalData.userInfo,
+            hasUserInfo: true
+          })
+          this.bindData()
+        }
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  bindData() {
+    app.getUserNewsType(() => {
+      this.setData({
+        userNewsType: app.globalData.userNewsType
+      })
+      // 生成typeStatus用于渲染
+      let typeStatus = [];
+      for (let i = 0; i < this.data.typeKey.length; i++) {
+        typeStatus.push({
+          code: this.data.typeKey[i],
+          name: this.data.typeValue[i],
+          ifChecked: this.data.userNewsType.indexOf(this.data.typeKey[i]) >= 0
+        })
+      }
+      this.setData({
+        typeStatus: typeStatus
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  changeUserTags(event) {
+    let changingTypeIndex = event.currentTarget.dataset.changingtype;
+    let checkedTypeStatus = this.data.typeStatus.filter(t => t.ifChecked);
+    if (checkedTypeStatus.length === 1 && checkedTypeStatus[0].code === this.data.typeStatus[changingTypeIndex].code ){
+      wx.showToast({
+        title: '请至少选择一种',
+        image: '/images/notice.png',
+        duration: 2000
+      })
+      return
+    }
+    let typeStatus = [...this.data.typeStatus];
+    let ifChecked = typeStatus[changingTypeIndex].ifChecked
+    typeStatus[changingTypeIndex].ifChecked = !ifChecked
+    let filteredTags = typeStatus.filter(t => t.ifChecked).map(t => t.code)
+    // if (filteredTags.length <= 0) {
+    //   wx.showToast({
+    //     title: '请至少选择一种',
+    //     image: '/images/notice.png',
+    //     duration: 2000
+    //   })
+    //   return
+    // }
+    // 更新野狗云数据库
+    let userTag = {
+      openId: app.globalData.openId,
+      tags: filteredTags
+    }
+    console.log(userTag)
+    app.updateTag(userTag, this.bindData);
   }
 })

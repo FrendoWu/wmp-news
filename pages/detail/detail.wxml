@@ -1,0 +1,16 @@
+<view class="header-divider"></view>
+<view class='container'>
+  <view class="title-wrapper">
+    <view class='title-text'>{{news.title}}</view>
+    <view class='subtitle-wrapper'>
+      <view>{{news.source === undefined || news.source === ''? '': news.source+ '  '}}{{news.date}}</view>
+      <view>{{news.readCount === undefined || news.readCount === ''?'': '阅读量:' + news.readCount}}</view>
+    </view>
+  </view>
+  <view wx:for="{{news.content}}" class='content-list'>
+    <view wx:if="{{item.type === 'p'}}" class='paragraph'>{{item.text}}</view>
+    <image wx:elif="{{item.type === 'image'}}" class='news-detail-image' src='{{item.src}}' mode="widthFix"></image>
+    <view wx:elif="{{item.type === 'strong'}}" class='strong-text'>{{item.text}}</view>
+    <view wx:else>{{item.text}}</view>
+  </view>
+</view>

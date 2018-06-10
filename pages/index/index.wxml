@@ -1,17 +1,37 @@
 <view class='news-type-wrapper'>
   <view class="news-type">
-    <view
-      wx:for="{{newsType}}"
-      wx:for-index="j"
-      wx:for-item="type"
-      class="{{newsType[j] === selectedNewsType? 'news-type-item news-type-checked': 'news-type-item'}}"
-      data-news-type="{{type}}"
-      bindtap='tapNewsType'>
-      {{newsTypeMap[j]}}
+    <view wx:for="{{userNewsType}}" wx:for-index="j" wx:for-item="type" class="{{userNewsType[j] === selectedNewsType? 'news-type-item news-type-checked': 'news-type-item'}}" data-news-type="{{type}}" bindtap='tapNewsType'>
+      {{userNewsTypeMap[j]}}
     </view>
   </view>
   <view class='news-icon'>
-    <image src='/images/news-type-edit.png' class='news-type-image' bindtap='onTapNewsType'>
-    </image>
+    <button open-type="getUserInfo" bindgetuserinfo='getUserInfo' class='news-type-button'>
+      <image src='/images/news-type-edit.png' class='news-type-image'>
+      </image>
+    </button>
+  </view>
+</view>
+<view>
+  <swiper indicator-dots="true" indicator-color="#B3E5FC" indicator-active-color="#0288D1" circular="true" autoplay="true" interval="5000" duration="500" class='swiper-wrapper'>
+    <view wx:for="{{swiperImgUrlList}}">
+      <swiper-item class='swiper-item' data-newsId="{{item.id}}" bindtap='goToDetail'>
+        <view class='swiper-tag'>震  今</view>
+        <image src="{{item.firstImage}}" class="slide-image" />
+        <view class='swiper-title'>{{item.title}}</view>
+        <view class='swiper-subtitle'>
+          <view class='swiper-source'>{{item.source}}</view>
+          <view class='swiper-date'>{{item.date}}</view>
+        </view>
+      </swiper-item>
+    </view>
+  </swiper>
+</view>
+<view class='news-list'>
+  <view class='news-item' wx:for="{{news}}" data-newsId="{{item.id}}" bindtap='goToDetail'>
+    <view class='news-text'>
+      <view class='news-title'>{{item.title}}</view>
+      <view class='news-subtitle'>{{item.source}} {{item.date}}</view>
+    </view>
+    <image src="{{item.firstImage}}" class="news-image" />
   </view>
 </view>

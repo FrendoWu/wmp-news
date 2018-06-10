@@ -1,1 +1,40 @@
-/* pages/type/type.wxss */
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  font-size: 30rpx;
+}
+
+.tag-list {
+  margin-top: 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.tag-item {
+  width: 140rpx;
+  margin:20rpx;
+  border: 1rpx solid #03A9F4;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 50rpx;
+}
+
+.tag-item-checked {
+  background-color: #03A9F4;
+  color: #ffffff;
+}
