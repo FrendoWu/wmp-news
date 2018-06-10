@@ -37,7 +37,7 @@
 
 界面截图
 
-![tag-setting](./images/screenshot/news-list.png)
-![tag-setting](./images/screenshot/news-detail.png)
-![tag-setting](./images/screenshot/tag-setting.png)
+![tag-setting](./images/news-list.png)
+![tag-setting](./images/news-detail.png)
+![tag-setting](./images/tag-setting.png)
 
