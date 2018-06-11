@@ -1,12 +1,12 @@
 <view class="header-divider"></view>
 <view class='container'>
   <view class="title-wrapper">
-    <view class='title-text'>{{news.title}}</view>
+    <view class='title-text'>{{!!news.title? news.title: '震今|未知标题'}}</view>
     <view class='subtitle-wrapper'>
       <!-- 防止在新闻数据未加载完成时显示undefined -->
-      <view>{{news.source === undefined || news.source === ''? '': news.source+ '  '}}{{news.date}}</view>
+      <view>{{!!news.source? news.source: '未知来源'}} {{!!news.date? news.date: '未知发布时间'}}</view>
       <!-- 防止在新闻数据未加载完成时显示'阅读量' -->
-      <view>{{news.readCount === undefined || news.readCount === ''?'': '阅读量:' + news.readCount}}</view>
+      <view>{{!!news.readCount? '阅读量:' + news.readCount: ''}}</view>
     </view>
   </view>
   <view wx:for="{{news.content}}" class='content-list'>

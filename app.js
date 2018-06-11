@@ -55,11 +55,14 @@ App({
         this.globalData.wilddogUserKey = wilddogUserKey;
       } else {
         // 如果没有，默认给用户附上所有新闻类型，并将该用户信息存储到野狗云
-        let userTag = {
-          openId: openId,
-          tags: this.globalData.typeKey
+        // 解决openId为undefined报错的bug，判断openId是否有
+        if (!!openId) {
+          let userTag = {
+            openId: !!openId ? openId : '',
+            tags: this.globalData.typeKey
+          }
+          this.addTag(userTag);
         }
-        this.addTag(userTag);
         this.globalData.userNewsType = this.globalData.typeKey
       }
       callback && callback();
@@ -122,7 +125,6 @@ App({
     // 微信登录
     wx.login({
       success: res => {
-        console.log(res)
         let loginCode = res.code;
         //调用request请求api转换登录凭证获取openId
         wx.request({

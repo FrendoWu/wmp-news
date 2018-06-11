@@ -4,11 +4,12 @@
   <text class="userinfo-nickname">{{userInfo.nickName}}</text>
 </view>
 <view class='tag-list'>
-  <view wx:for="{{typeStatus}}" 
-        wx:for-index="j" 
-        wx:for-item="type" 
-        class="{{type.ifChecked ? 'tag-item tag-item-checked': 'tag-item'}}" 
-        bindtap='onChangeUserTags' 
+  <view wx:for="{{typeStatus}}"
+        wx:for-index="j"
+        wx:for-item="type"
+        wx:key="item.code"
+        class="{{type.ifChecked ? 'tag-item tag-item-checked': 'tag-item'}}"
+        bindtap='onChangeUserTags'
         data-changingType="{{j}}">
     {{typeValue[j]}}
   </view>
